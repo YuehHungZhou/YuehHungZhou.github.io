@@ -1,0 +1,54 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width; initial-scale=1.0;" />
+</head>
+<body>
+
+<p>新光導轉(測試站) URL: <a href="https://www.skm.com.tw/rd/?rd=cA5I84">Deeplink</a></p>
+<p>新光導轉(正式站) URL: <a href="https://www.skm.com.tw/rd/?rd=cA5I7Y">Deeplink</a></p>
+
+<p>正掃(測試站) URL: <a href="skmapp://www.skm.com/skmpayscan?id=R0FJL0VVSkFTRkNINi9GT1hBVFhSNlI1WTk0R1dCUk1WREJQVFVQV1dHRT05RTc1M0M4MEQ0ODg0MjE2OUUzMTU3MzkxQ0RGQUU5NQ%3D%3D">正掃Deeplink</a></p>
+
+<p>新光導轉 (有錨點的網頁?)URL: <a href="https://www.skm.com.tw/EventNews/eventsDetial?ActiveUUID=c332fcf7-66ea-4c27-b32e-97cc920e210a&UUID=c49931b0-92d5-4515-9434-6a55b2bea5e6#/p1">Deeplink</a></p>
+<p>測試站skmapp:// URL: <a href="skmapp://www.skm.com/exhibitionlist?store=B48F23F0-A7FF-4245-967D-43D20BBE71D8&sname=新光的什麼店(測試站)">Deeplink</a></p>
+<p>正式站skmapp:// URL: <a href="skmapp://www.skm.com/exhibitionlist?store=E4EF2308-BEC4-4219-B6B6-978243ABA917&sname=台北信義新天地">Deeplink</a></p>
+
+<form>
+請輸入 test deeplink ：<input id="testDeepLinkForm" type="text" name="testDeepLink">
+</form>
+
+<p><button onclick="openDeepLink()"> normal deeplink</button></p>
+<p><button onclick="TestDeeplinkAndroid()">Android webview test deeplink</button></p>
+<p><button onclick="TestDeeplinkIOS()">IOS webview test deeplink</button></p>
+
+<script type="text/javascript">
+function openDeepLink(){
+var url = document.getElementById("testDeepLinkForm").value;
+window.open(url)
+}
+
+function TestDeeplinkAndroid(){
+	if(typeof window.skmAppDeeplink === "function"){
+		window.skmAppDeeplink(document.getElementById("testDeepLinkForm").value);
+	}
+}
+
+function TestDeeplinkIOS(){
+	if(typeof window.webkit.messageHandlers.skmAppDeeplink.postMessage === "function"){
+		window.webkit.messageHandlers.skmAppDeeplink.postMessage(document.getElementById("testDeepLinkForm").value);
+	}
+}
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
